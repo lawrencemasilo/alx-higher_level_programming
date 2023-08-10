@@ -4,6 +4,6 @@ for firstInteger in range(10):
         if (firstInteger != 8) and (secondInteger != 9):
             print("{}{},".format(firstInteger, secondInteger), end=" ")
         elif (firstInteger == 8) and (secondInteger == 9):
-            print("{}{}".format(firstInteger, secondInteger), end=" ")
+            print("{}{}".format(firstInteger, secondInteger), end="\n")
         else:
             print("{}{},".format(firstInteger, secondInteger), end=" ")
