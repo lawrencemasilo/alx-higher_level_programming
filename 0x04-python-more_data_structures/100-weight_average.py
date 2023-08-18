@@ -1,4 +1,4 @@
-#!/usr/python3
+#!/usr/bin/python3
 
 def weight_average(my_list=[]):
     tuple_sum = 0
