@@ -7,5 +7,5 @@ def safe_print_integer_err(value):
         print("{:d}".format(value))
         return True
     except ValueError as ve:
-        sys.stderr.write("Exception: {}\n".format(ve))
+        print("Exception: {}".format(ve), file=sys.stderr)
         return False
