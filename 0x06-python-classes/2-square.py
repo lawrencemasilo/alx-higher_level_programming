@@ -3,6 +3,10 @@
 
 
 class Square:
+    """ __inti__: to initialize size
+        self.__size: to make size private
+        try: is to check if size is an integer
+    """
     def __init__(self, size=0):
         self.__size = size
 
