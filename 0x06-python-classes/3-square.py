@@ -7,7 +7,7 @@ class Square:
         self.__size: to make size private
         try: is to check if size is an integer
     """
-    def __init__(self, size):
+    def __init__(self, size=0):
         if isinstance(size, int) is not True:
             raise TypeError("size must be an integer")
         if size < 0:
