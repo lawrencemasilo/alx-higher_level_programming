@@ -14,6 +14,9 @@ class Rectangle:
         area(): returns the area of the rectangle
         perimeter(): returns perimeter of the rectangle
     """
+
+    number_of_instances = 0
+
     def __init__(self, width=0, height=0):
         if isinstance(width, int) is not True:
             raise TypeError("width must be an integer")
