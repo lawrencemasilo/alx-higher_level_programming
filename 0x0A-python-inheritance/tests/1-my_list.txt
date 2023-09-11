@@ -1,10 +1,32 @@
-"""This tests whether the Class can append and display the list"""
-	>>> MyList = __import__("1-my_list").MyList
-	>>> my_list = MyList()
-	>>> my_list.append(1)
-	>>> my_list.append(4)
-	>>> my_list.append(2)
-	>>> my_list.append(3)
-	>>> my_list.append(5)
-	>>> print(my_list)
-	[1, 4, 2, 3, 5]
+This tests whether the Class can append and display the list
+
+Test 1:
+
+>>> MyList = __import__("1-my_list").MyList
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.append(4)
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> my_list.append(5)
+>>> print(my_list)
+[1, 4, 2, 3, 5]
+>>>
+
+Test 2:
+
+>>> MyList = __import__("1-my_list").MyList
+>>> my_list = MyList()
+>>> my_list.append(1+9)
+>>> my_list.append(6)
+>>> my_list.append(5)
+>>> my_list.print_sorted()
+[5, 6, 10]
+>>>
+
+Test 3:
+
+>>> my_list = MyList()
+>>> my_list.append(1 + 6 - 1)
+>>> my_list.append(6)
+>>>
