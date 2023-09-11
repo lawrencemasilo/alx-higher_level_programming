@@ -9,4 +9,5 @@ def lookup(obj):
     """
     parameter a: an object
     """
+
     return list(dir(obj))
