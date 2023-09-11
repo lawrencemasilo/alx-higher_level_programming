@@ -1,6 +1,6 @@
 This tests whether the Class can append and display the list
 
-Test 1:
+Test 1: Printing out unsorted elements
 
 >>> MyList = __import__("1-my_list").MyList
 >>> my_list = MyList()
@@ -13,7 +13,7 @@ Test 1:
 [1, 4, 2, 3, 5]
 >>>
 
-Test 2:
+Test 2: printing out sorted element
 
 >>> MyList = __import__("1-my_list").MyList
 >>> my_list = MyList()
@@ -24,9 +24,23 @@ Test 2:
 [5, 6, 10]
 >>>
 
-Test 3:
+Test 3: appending elements
 
+>>> MyList = __import__("1-my_list").MyList
 >>> my_list = MyList()
 >>> my_list.append(1 + 6 - 1)
 >>> my_list.append(6)
+>>>
+
+Test 4: Displaying all elements
+>>> MyList = __import__("1-my_list").MyList
+>>> my_list = MyList()
+>>> my_list.append(1+9)
+>>> my_list.append(6)
+>>> my_list.append(5)
+>>> for i in my_list:
+...	print(i)
+10
+6
+5
 >>>
