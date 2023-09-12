@@ -9,7 +9,7 @@ def write_file(filename="", text=""):
         filename: The name of the file to open/read
         text: The content to be added to a file
     """
-    with open(filename, mode="r+", encoding="utf-8") as fo:
+    with open(filename, mode="w", encoding="utf-8") as fo:
         fo.write(text)
         characters = len(text)
         fo.close()
