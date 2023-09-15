@@ -7,17 +7,21 @@ The base class for all classes in this project
 
 class Base():
     """
-    print(__import__("my_module").MyClass.my_function.__doc__)
+    print(__import__("base").MyClass.my_function.__doc__)
     manages id attribute
     """
     __nb_objects = 0
 
     def __init__(self, id=None):
         """
-        print(__import__("my_module").my_function.__doc__)
+        print(__import__("base").my_function.__doc__)
         assigns the public instance attribute id,
-            with the argument value,
-            or the private class attribute __nb_objects"""
+        with the argument value,
+        or the private class attribute __nb_objects
+
+        Args:
+            id: Must be integer type only
+        """
         if id is not None:
             self.id = id
         else:
