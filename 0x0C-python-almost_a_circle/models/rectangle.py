@@ -28,50 +28,34 @@ class Rectangle(Base):
         self.__y = y
         super().__init__(id)
 
-        @property
-        def width(self):
-            return __width
+    @property
+    def get_width(self):
+        return self.__width
 
-        @width.setter
-        def width(self, value):
-            if type(value) is not [int, float]:
-                raise TypeError("Enter integer or float")
-            if value < 0:
-                raise ValueError("Positive numbers only")
-            else:
-                self.__width = value
+    @get_width.setter
+    def set_width(self, value):
+        self.__width = value
 
-        @property
-        def height(self):
-            return __height
+    @property
+    def get_height(self):
+        return self.__height
 
-        @height.setter
-        def height(self, value):
-            if type(value) is not [int, float]:
-                raise TypeError("Enter integer or float")
-            if value < 0:
-                raise ValueError("Positive numbers only")
-            else:
-                self.__height == value
+    @get_height.setter
+    def set_height(self, value):
+        self.__height == value
 
-        @property
-        def x(self):
-            return __x
+    @property
+    def get_x(self):
+        return self.__x
 
-        @x.setter
-        def x(self, value):
-            if type(value) is not [int, float]:
-                raise TypeError("Enter integer or float")
-            else:
-                self.__x == value
+    @get_x.setter
+    def set_x(self, value):
+        self.__x == value
 
-        @property
-        def y(self):
-            return __y
+    @property
+    def get_y(self):
+        return self.__y
 
-        @y.setter
-        def y(self, value):
-            if type(value) is not [int, float]:
-                raise TypeError("Enter integer or float")
-            else:
-                self.__y == value
+    @get_y.setter
+    def set_y(self, value):
+        self.__y == value
