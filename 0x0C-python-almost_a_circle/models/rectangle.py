@@ -22,10 +22,31 @@ class Rectangle(Base):
         Args:
             id: Must be integer type only
         """
+
+        if not isinstance(width, int):
+            raise TypeError("width must be an integer")
+        if width <= 0:
+            raise ValueError("width must be > 0")
         self.__width = width
+
+        if not isinstance(height, int):
+            raise TypeError("height must be an integer")
+        if height <= 0:
+            raise ValueError("height must be > 0")
         self.__height = height
+
+        if not isinstance(x, int):
+            raise TypeError("x must be an integer")
+        if x < 0:
+            raise ValueError("x must be >= 0")
         self.__x = x
+
+        if not isinstance(y, int):
+            raise TypeError("y must be an integer")
+        if y < 0:
+            raise ValueError("y must be >= 0")
         self.__y = y
+
         super().__init__(id)
 
     @property
@@ -34,6 +55,10 @@ class Rectangle(Base):
 
     @get_width.setter
     def set_width(self, value):
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        if value <= 0:
+            raise ValueError("width must be > 0")
         self.__width = value
 
     @property
@@ -42,6 +67,10 @@ class Rectangle(Base):
 
     @get_height.setter
     def set_height(self, value):
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        if value <= 0:
+            raise ValueError("width must be > 0")
         self.__height == value
 
     @property
@@ -50,6 +79,10 @@ class Rectangle(Base):
 
     @get_x.setter
     def set_x(self, value):
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        if value < 0:
+            raise ValueError("width must be > 0")
         self.__x == value
 
     @property
@@ -58,4 +91,8 @@ class Rectangle(Base):
 
     @get_y.setter
     def set_y(self, value):
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        if value < 0:
+            raise ValueError("width must be > 0")
         self.__y == value
