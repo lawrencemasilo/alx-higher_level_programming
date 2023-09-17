@@ -30,8 +30,34 @@ class TestBaseClass(unittest.TestCase):
         r4 = Rectangle(15, 65, 20, 50)
         self.assertEqual(r4.get_y, 50)
 
-        r5 = Rectangle(15, 65, 20, -50)
-        self.assertEqual(r5.get_y, -50)
+    def test_raised_exceptions(self):
+        """Tests the raised exceptions"""
+        with self.assertRaises(ValueError):
+            Rectangle(4, -2, 5, 5, 12)
 
-        r6 = Rectangle(15, 65, -20, -50)
-        self.assertEqual(r6.get_x, -20)
+        with self.assertRaises(ValueError):
+            Rectangle(-4, 2, 5, 5, 12)
+
+        with self.assertRaises(ValueError):
+            Rectangle(0, 2, 5, 5, 12)
+
+        with self.assertRaises(ValueError):
+            Rectangle(4, 0, 5, 5, 12)
+
+        with self.assertRaises(ValueError):
+            Rectangle(4, 2, -1, 5, 12)
+
+        with self.assertRaises(ValueError):
+            Rectangle(4, 2, 1, -5, 12)
+
+        with self.assertRaises(TypeError):
+            Rectangle("1", 4, 5, 5, 12)
+
+        with self.assertRaises(TypeError):
+            Rectangle(1, "4", 5, 5, 12)
+
+        with self.assertRaises(TypeError):
+            Rectangle(1, 4, "5", 5, 12)
+
+        with self.assertRaises(TypeError):
+            Rectangle(1, 4, 5, "5", 12)
