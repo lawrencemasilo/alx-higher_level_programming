@@ -2,6 +2,8 @@
 """This is a unittest for the Rectangle class"""
 import unittest
 from models.rectangle import Rectangle
+import sys
+from io import StringIO
 
 
 class TestBaseClass(unittest.TestCase):
@@ -71,9 +73,36 @@ class TestArea(unittest.TestCase):
 
         self.assertEqual(Rectangle(5, 10, 10, 12, 15).area(), 50)
 
-    def test_area_exceptiond(self):
+    def test_area_exceptions(self):
         with self.assertRaises(ValueError):
             Rectangle(-1, 4, 5, 5, 12).area()
 
         with self.assertRaises(ValueError):
             Rectangle(1, -4, 5, 5, 12).area()
+
+
+class TestDisplay(unittest.TestCase):
+    def setUp(self):
+        self.original_stdout = sys.stdout
+        sys.stdout = StringIO()
+
+    def tearDown(self):
+        sys.stdout = self.original_stdout
+
+    def test_display(self):
+        Rectangle(4, 6).display()
+        output = sys.stdout.getvalue()
+        self.assertEqual(output, "####\n####\n####\n####\n####\n####\n")
+
+    def test_display_exceptions(self):
+        with self.assertRaises(TypeError):
+            Rectangle(4, "6").display()
+
+        with self.assertRaises(TypeError):
+            Rectangle("4", 6).display()
+
+        with self.assertRaises(ValueError):
+            Rectangle(-4, 6).display()
+
+        with self.assertRaises(ValueError):
+            Rectangle(4, -6).display()
