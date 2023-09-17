@@ -106,3 +106,31 @@ class TestDisplay(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             Rectangle(4, -6).display()
+
+
+class TestStr(unittest.TestCase):
+    def setUp(self):
+        self.original_stdout = sys.stdout
+        sys.stdout = StringIO()
+
+    def tearDown(self):
+        sys.stdout = self.original_stdout
+
+    def test_str(self):
+        r1 = Rectangle(1, 9, 2, 10, 1)
+        print(r1)
+        output = sys.stdout.getvalue()
+        self.assertEqual(output, "[Rectangle] (1) 2/10 - 1/9\n")
+
+    def test_str_exceptions(self):
+        with self.assertRaises(TypeError):
+            print(Rectangle("1", 2, 3, 5, 1))
+
+        with self.assertRaises(TypeError):
+            print(Rectangle(1, "2", 3, 5, 1))
+
+        with self.assertRaises(ValueError):
+            print(Rectangle(1, -6, 3, 5, 1))
+
+        with self.assertRaises(ValueError):
+            print(Rectangle(1, 6, 3, -5, 1))
