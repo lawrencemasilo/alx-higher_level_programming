@@ -178,3 +178,6 @@ class Rectangle(Base):
                 if kwargs["y"] <= 0:
                     raise ValueError("y must be >= 0")
                 self.__y = kwargs["y"]
+
+    def to_dictionary(self):
+        return self.__dict__
