@@ -149,3 +149,34 @@ class TestCoordinates(unittest.TestCase):
         r1.display()
         output = sys.stdout.getvalue()
         self.assertEqual(output, "\n\n  ##\n  ##\n  ##\n")
+
+
+class TestUpdate(unittest.TestCase):
+    def test_update(self):
+        r1 = Rectangle(2, 4, 1, 2, 1)
+        r1.update(1, 4)
+        self.assertEqual(r1.get_width, 4)
+
+        r1.update(1, 4, 2)
+        self.assertEqual(r1.get_height, 2)
+
+        self.assertEqual(r1.id, 1)
+
+        r1.update(1, 4, 2, 4, 1)
+        self.assertEqual(r1.get_x, 4)
+
+        self.assertEqual(r1.get_y, 1)
+
+    def test_exceptions(self):
+        r1 = Rectangle(2, 4, 1, 2, 1)
+        with self.assertRaises(ValueError):
+            r1.update(1, -4)
+
+        with self.assertRaises(ValueError):
+            r1.update(1, 4, -1)
+
+        with self.assertRaises(ValueError):
+            r1.update(1, 4, 1, -2)
+
+        with self.assertRaises(ValueError):
+            r1.update(1, 4, 1, 2, -1)
