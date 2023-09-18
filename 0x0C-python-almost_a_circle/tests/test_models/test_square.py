@@ -21,16 +21,16 @@ class TestBaseClass(unittest.TestCase):
     def test_io_value(self):
         """Tests input output values"""
         s1 = Square(4)
-        self.assertEqual(s1.get_width, 4)
+        self.assertEqual(s1.width, 4)
 
         s2 = Square(100, 4, 6)
-        self.assertEqual(s2.get_height, 100)
+        self.assertEqual(s2.height, 100)
 
         s3 = Square(15, 5, 7)
-        self.assertEqual(s3.get_x, 5)
+        self.assertEqual(s3.x, 5)
 
         s4 = Square(15, 20, 50)
-        self.assertEqual(s4.get_y, 50)
+        self.assertEqual(s4.y, 50)
 
     def test_raised_exceptions(self):
         """Tests the raised exceptions"""
@@ -57,6 +57,26 @@ class TestBaseClass(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             Square(4, 5, "5", 12)
+
+    def test_raised_exceptions_TypeError_messages(self):
+        with self.assertRaises(TypeError, msg="x must be an integer"):
+            Square(1, "5", 5, 12)
+
+        with self.assertRaises(TypeError, msg="y must be an integer"):
+            Square(1, 5, "5", 12)
+
+        with self.assertRaises(TypeError, msg="width must be an integer"):
+            Square("1", 5, 5, 12)
+
+    def test_raised_exceptions_ValueError_messages(self):
+        with self.assertRaises(ValueError, msg="width must be > 0"):
+            Square(-1, 5, 5, 12)
+
+        with self.assertRaises(ValueError, msg="x must be >= 0"):
+            Square(1, -5, 5, 12)
+
+        with self.assertRaises(ValueError, msg="y must be >= 0"):
+            Square(4, 5, -5, 12)
 
 
 class TestArea(unittest.TestCase):
