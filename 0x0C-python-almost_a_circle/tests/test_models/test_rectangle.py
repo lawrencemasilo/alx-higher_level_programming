@@ -167,6 +167,19 @@ class TestUpdate(unittest.TestCase):
 
         self.assertEqual(r1.get_y, 1)
 
+    def test_kwargs(self):
+        r2 = Rectangle(2, 4, 1, 2, 1)
+        r2.update(height=10)
+        self.assertEqual(r2.get_height, 10)
+        r2.update(id=100)
+        self.assertEqual(r2.id, 100)
+        r2.update(width=6035)
+        self.assertEqual(r2.get_width, 6035)
+        r2.update(x=1845)
+        self.assertEqual(r2.get_x, 1845)
+        r2.update(y=78)
+        self.assertEqual(r2.get_y, 78)
+
     def test_exceptions(self):
         r1 = Rectangle(2, 4, 1, 2, 1)
         with self.assertRaises(ValueError):
@@ -180,3 +193,14 @@ class TestUpdate(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             r1.update(1, 4, 1, 2, -1)
+
+        with self.assertRaises(TypeError):
+            r1.update(1, "fgddsgsdfhf", 4, 5)
+
+    def test_kwargs_exceptions(self):
+        r2 = Rectangle(2, 4, 1, 2, 1)
+        with self.assertRaises(ValueError):
+            r2.update(height=-90)
+
+        with self.assertRaises(TypeError):
+            r2.update(width="ufabkshaihfbas")
