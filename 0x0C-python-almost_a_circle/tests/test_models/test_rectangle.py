@@ -21,16 +21,16 @@ class TestBaseClass(unittest.TestCase):
     def test_io_value(self):
         """Tests input output values"""
         r1 = Rectangle(4, 5)
-        self.assertEqual(r1.get_width, 4)
+        self.assertEqual(r1.width, 4)
 
         r2 = Rectangle(90, 100, 4, 6)
-        self.assertEqual(r2.get_height, 100)
+        self.assertEqual(r2.height, 100)
 
         r3 = Rectangle(15, 39, 5, 7)
-        self.assertEqual(r3.get_x, 5)
+        self.assertEqual(r3.x, 5)
 
         r4 = Rectangle(15, 65, 20, 50)
-        self.assertEqual(r4.get_y, 50)
+        self.assertEqual(r4.y, 50)
 
     def test_raised_exceptions(self):
         """Tests the raised exceptions"""
@@ -63,6 +63,32 @@ class TestBaseClass(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             Rectangle(1, 4, 5, "5", 12)
+
+    def test_raised_exceptions_TypeError_messages(self):
+        with self.assertRaises(TypeError, msg="x must be an integer"):
+            Rectangle(1, 4, "5", 5, 12)
+
+        with self.assertRaises(TypeError, msg="y must be an integer"):
+            Rectangle(1, 4, 5, "5", 12)
+
+        with self.assertRaises(TypeError, msg="width must be an integer"):
+            Rectangle("1", 4, 5, 5, 12)
+
+        with self.assertRaises(TypeError, msg="height must be an integer"):
+            Rectangle(1, "4", 5, 5, 12)
+
+    def test_raised_exceptions_ValueError_messages(self):
+        with self.assertRaises(ValueError, msg="height must be > 0"):
+            Rectangle(1, -4, 5, 5, 12)
+
+        with self.assertRaises(ValueError, msg="width must be > 0"):
+            Rectangle(-1, 4, 5, 5, 12)
+
+        with self.assertRaises(ValueError, msg="x must be >= 0"):
+            Rectangle(1, 4, -5, 5, 12)
+
+        with self.assertRaises(ValueError, msg="y must be >= 0"):
+            Rectangle(1, 4, 5, -5, 12)
 
 
 class TestArea(unittest.TestCase):
@@ -155,30 +181,30 @@ class TestUpdate(unittest.TestCase):
     def test_update(self):
         r1 = Rectangle(2, 4, 1, 2, 1)
         r1.update(1, 4)
-        self.assertEqual(r1.get_width, 4)
+        self.assertEqual(r1.width, 4)
 
         r1.update(1, 4, 2)
-        self.assertEqual(r1.get_height, 2)
+        self.assertEqual(r1.height, 2)
 
         self.assertEqual(r1.id, 1)
 
         r1.update(1, 4, 2, 4, 1)
-        self.assertEqual(r1.get_x, 4)
+        self.assertEqual(r1.x, 4)
 
-        self.assertEqual(r1.get_y, 1)
+        self.assertEqual(r1.y, 1)
 
     def test_kwargs(self):
         r2 = Rectangle(2, 4, 1, 2, 1)
         r2.update(height=10)
-        self.assertEqual(r2.get_height, 10)
+        self.assertEqual(r2.height, 10)
         r2.update(id=100)
         self.assertEqual(r2.id, 100)
         r2.update(width=6035)
-        self.assertEqual(r2.get_width, 6035)
+        self.assertEqual(r2.width, 6035)
         r2.update(x=1845)
-        self.assertEqual(r2.get_x, 1845)
+        self.assertEqual(r2.x, 1845)
         r2.update(y=78)
-        self.assertEqual(r2.get_y, 78)
+        self.assertEqual(r2.y, 78)
 
     def test_exceptions(self):
         r1 = Rectangle(2, 4, 1, 2, 1)
