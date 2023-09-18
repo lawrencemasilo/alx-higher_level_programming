@@ -134,3 +134,18 @@ class TestStr(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             print(Rectangle(1, 6, 3, -5, 1))
+
+
+class TestCoordinates(unittest.TestCase):
+    def setUp(self):
+        self.original_stdout = sys.stdout
+        sys.stdout = StringIO()
+
+    def tearDown(self):
+        sys.stdout = self.original_stdout
+
+    def test_coordinates(self):
+        r1 = Rectangle(2, 3, 2, 2, 1)
+        r1.display()
+        output = sys.stdout.getvalue()
+        self.assertEqual(output, "\n\n  ##\n  ##\n  ##\n")
