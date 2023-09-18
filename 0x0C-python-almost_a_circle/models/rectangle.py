@@ -117,8 +117,6 @@ class Rectangle(Base):
             )
 
     def update(self, *args):
-        if not isinstance(args[0], int):
-            raise TypeError("id must be an integer")
         super().__init__(args[0])
 
         if len(args) > 1:
