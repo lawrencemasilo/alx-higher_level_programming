@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-if (process.argv.length === 2 || process.argv[2] === 1) {
+if (process.argv.length < 2) {
   console.log(0);
 } else {
   const array = process.argv.slice(2).map(Number);
