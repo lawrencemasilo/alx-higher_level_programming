@@ -23,11 +23,10 @@ if __name__ == '__main__':
         db = MySQLdb.connect(host=lh, port=3306, user=un, passwd=pw, db=db_n)
         cursor = db.cursor()
         cursor.execute(query, (statename,))
-        states = cursor.fetchall()
-
-        for state in states:
-            print(state)
-
+        cities = cursor.fetchall()
+        if cities:
+            citynames = ', '.join([city[1] for city in cities])
+            print("{}".format(citynames))
         cursor.close()
         db.close()
 
