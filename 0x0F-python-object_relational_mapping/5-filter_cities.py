@@ -14,7 +14,7 @@ if __name__ == '__main__':
     un = sys.argv[1]
     pw = sys.argv[2]
     statename = sys.argv[4]
-    lh = 'localhost'
+    lh = "localhost"
 
     try:
         query = """SELECT cities.id, cities.name, states.name FROM
