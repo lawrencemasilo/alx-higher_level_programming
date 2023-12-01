@@ -10,4 +10,4 @@ if __name__ == "__main__":
             auth=('user', 'pass')
             )
 
-    print(url_r.headers['X-Request-Id'])
+    print(str(url_r.headers['X-Request-Id']))
