@@ -9,6 +9,10 @@ request.get(url, (err, response, body) => {
     process.exit(1);
   }
 
+  if (response.statusCode !== 200) {
+    console.error(`${response.statusCode}`);
+    process.exit(1);
+  }
   try {
     const films = JSON.parse(body).results;
     const wedge = films.filter((film) =>
